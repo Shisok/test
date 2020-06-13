@@ -64,7 +64,7 @@ class VilleController {
 			ville = new Ville(codeCommuneINSEE, nomcommune, codePostal, libelleAcheminement, ligne5, latitude,
 					longitude);
 			listeVille.add(ville);
-
+			System.out.println("testBuild");
 		}
 
 		return listeVille;
