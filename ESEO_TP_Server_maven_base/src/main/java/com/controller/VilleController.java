@@ -1,83 +1,60 @@
 package com.controller;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.modele.Ville;
-
-//import com.blo.VilleBLO;
+import com.blo.VilleBLO;
+import com.dto.Ville;
 
 @RestController
 //@RequestMapping("/path")
 class VilleController {
-
-	// @Autowired
-	// VilleBLO villeService;
+	@Autowired
+	VilleBLO villeService;
 
 	// Methode GET
-	@RequestMapping(value = "/ville", method = RequestMethod.GET, produces = "application/json")
+	// ?codePostal=abc apres ville pour parametre
+	@GetMapping(value = "/ville")
 	@ResponseBody
-	public List<Ville> appelGet() throws ClassNotFoundException, SQLException {
+	public List<Ville> appelGet(
+			@RequestParam(required = false, value = "codePostal", defaultValue = "0") String monParam) {
 		System.out.println("Appel GET");
-		String jdbcdriver = "com.mysql.cj.jdbc.Driver";
-		String user = "admin";
-		String password = "network";
-		String addressServer = "localhost";
-		String sqlUrl = "jdbc:mysql://" + addressServer + "/ville_france?user=" + user + "&password=" + password;
-
-		int codeCommuneINSEE = 0;
-		String nomcommune = "";
-		int codePostal = 0;
-		String libelleAcheminement = "";
-		String ligne5 = "";
-		float latitude = 0;
-		float longitude = 0;
-		Ville ville;
-
-		List<Ville> listeVille = new ArrayList<Ville>();
-
-		String sql = "SELECT * FROM ville_france ";
-		Class.forName(jdbcdriver);
-		Connection connection = DriverManager.getConnection("" + sqlUrl);
-		Statement stmt = connection.createStatement();
-		ResultSet rs = stmt.executeQuery(sql);
-		while (rs.next()) {
-			codeCommuneINSEE = rs.getInt("Code_commune_INSEE");
-			nomcommune = rs.getString("Nom_commune");
-			libelleAcheminement = rs.getString("Libelle_acheminement");
-			ligne5 = rs.getString("Ligne_5");
-			latitude = rs.getFloat("Latitude");
-			codePostal = rs.getInt("Code_postal");
-			longitude = rs.getFloat("Longitude");
-			System.out.println(codeCommuneINSEE + "+" + nomcommune + "+" + codePostal + "+" + libelleAcheminement + "+"
-					+ ligne5 + "+" + latitude + "+" + longitude);
-			ville = new Ville(codeCommuneINSEE, nomcommune, codePostal, libelleAcheminement, ligne5, latitude,
-					longitude);
-			listeVille.add(ville);
-			System.out.println("testBuild");
+		System.out.println("param = " + monParam);
+		List<Ville> ville;
+		if (monParam.contentEquals("0")) {
+			ville = villeService.getInfoVille();
+		} else {
+			ville = villeService.getInfoVilleParam(Integer.parseInt(monParam));
 		}
-
-		return listeVille;
+		return ville;
 	}
 
-	// Methode Post
-	@RequestMapping(value = "/villePost", method = RequestMethod.POST)
+	@GetMapping(value = "/ville/{codePostal}")
+	public List<Ville> appelGetParam(@PathVariable("codePostal") String codePostal) {
+		System.out.println("Appel GET");
+		List<Ville> ville;
+		ville = villeService.getInfoVilleParam(Integer.parseInt(codePostal));
+		return ville;
+	}
+
+	// Methode POST
+	@PostMapping(value = "/ville")
 	@ResponseBody
-	public String appelPost() {
+	public List<Ville> appelPost(@RequestBody Ville ville) {
 		System.out.println("Appel POST");
-
-		// TODO
-
-		return "JSON";
+		villeService.insertVille(ville);
+		List<Ville> ville1 = new ArrayList<>();
+		ville1.add(ville);
+		return ville1;
 	}
+
 }
