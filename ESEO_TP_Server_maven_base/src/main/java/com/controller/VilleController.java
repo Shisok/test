@@ -3,7 +3,10 @@ package com.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +22,9 @@ import com.dto.Ville;
 @RestController
 //@RequestMapping("/path")
 class VilleController {
+
+	static Logger logger = LoggerFactory.getLogger(VilleController.class.getName());
+
 	@Autowired
 	VilleBLO villeService;
 
@@ -28,8 +34,8 @@ class VilleController {
 	@ResponseBody
 	public List<Ville> appelGet(
 			@RequestParam(required = false, value = "codePostal", defaultValue = "0") String monParam) {
-		System.out.println("Appel GET");
-		System.out.println("param = " + monParam);
+		logger.info("Appel GET");
+		logger.info("param = {}", monParam);
 		List<Ville> ville;
 		if (monParam.contentEquals("0")) {
 			ville = villeService.getInfoVille();
@@ -41,7 +47,7 @@ class VilleController {
 
 	@GetMapping(value = "/ville/{codePostal}")
 	public List<Ville> appelGetParam(@PathVariable("codePostal") String codePostal) {
-		System.out.println("Appel GET");
+		logger.info("Appel GET");
 		List<Ville> ville;
 		ville = villeService.getInfoVilleParam(Integer.parseInt(codePostal));
 		return ville;
@@ -51,7 +57,7 @@ class VilleController {
 	@PostMapping(value = "/ville")
 	@ResponseBody
 	public List<Ville> appelPost(@RequestBody Ville ville) {
-		System.out.println("Appel POST");
+		logger.info("Appel POST");
 		villeService.insertVille(ville);
 		List<Ville> ville1 = new ArrayList<>();
 		ville1.add(ville);
@@ -61,8 +67,18 @@ class VilleController {
 	@PutMapping(value = "/ville")
 	@ResponseBody
 	public List<Ville> appelPut(@RequestBody Ville ville) {
-		System.out.println("Appel POST");
+		logger.info("Appel PUT");
 		villeService.insertVillePut(ville);
+		List<Ville> ville1 = new ArrayList<>();
+		ville1.add(ville);
+		return ville1;
+	}
+
+	@DeleteMapping(value = "/ville")
+	@ResponseBody
+	public List<Ville> appelDelete(@RequestBody Ville ville) {
+		logger.info("Appel PUT");
+		villeService.deleteVille(ville);
 		List<Ville> ville1 = new ArrayList<>();
 		ville1.add(ville);
 		return ville1;

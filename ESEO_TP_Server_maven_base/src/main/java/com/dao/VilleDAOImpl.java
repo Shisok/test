@@ -17,25 +17,26 @@ import com.dto.Ville;
 @Repository
 public class VilleDAOImpl implements VilleDAO {
 	private static final Logger logger = LoggerFactory.getLogger(new Throwable().getStackTrace()[0].getClassName());
-//	Logger logger = LoggerFactory.getLogger(getClass()); 
+
 	private String error = "Error";
 
 	public List<Ville> getInfoVille() {
 
-		System.out.println("Appel GET");
+		// System.out.println("Appel GET");
+		logger.info("Appel GET");
 		String sql = "SELECT * FROM ville_france ";
 		return requete(sql);
 
 	}
 
 	public List<Ville> getInfoVilleParam(int code) {
-		System.out.println("Appel GET");
+		// System.out.println("Appel GET");
+		logger.info("Appel GET");
 		String sql = "SELECT * FROM ville_france WHERE Code_postal=" + code;
 		return requete(sql);
 	}
 
 	public List<Ville> requete(String sql) {
-		System.out.println("Appel GET");
 
 		int codeCommuneINSEE = 0;
 		String nomcommune = "";
@@ -59,8 +60,8 @@ public class VilleDAOImpl implements VilleDAO {
 				latitude = rs.getFloat("Latitude");
 				codePostal = rs.getInt("Code_postal");
 				longitude = rs.getFloat("Longitude");
-				System.out.println(codeCommuneINSEE + "+" + nomcommune + "+" + codePostal + "+" + libelleAcheminement
-						+ "+" + ligne5 + "+" + latitude + "+" + longitude);
+//				System.out.println(codeCommuneINSEE + "+" + nomcommune + "+" + codePostal + "+" + libelleAcheminement
+//						+ "+" + ligne5 + "+" + latitude + "+" + longitude);
 				ville = new Ville(codeCommuneINSEE, nomcommune, codePostal, libelleAcheminement, ligne5, latitude,
 						longitude);
 				listeVille.add(ville);
@@ -73,7 +74,7 @@ public class VilleDAOImpl implements VilleDAO {
 	}
 
 	public void insertVille(Ville ville) {
-
+		logger.info("Appel POST");
 		try (Connection connection = JDBCConfiguration.getConnection();
 				Statement stmt = connection.createStatement();) {
 			stmt.executeUpdate(
@@ -88,6 +89,7 @@ public class VilleDAOImpl implements VilleDAO {
 	}
 
 	public void insertVillePut(Ville ville) {
+		logger.info("Appel PUT");
 		String sql = "SELECT * FROM ville_france WHERE Code_commune_INSE=" + ville.getCodeCommune();
 		List<Ville> listeVille = requete(sql);
 		if (listeVille.isEmpty()) {
@@ -106,7 +108,7 @@ public class VilleDAOImpl implements VilleDAO {
 	}
 
 	public void deleteVille(Ville ville) {
-
+		logger.info("Appel DELETE");
 		try (Connection connection = JDBCConfiguration.getConnection();
 				Statement stmt = connection.createStatement();) {
 			stmt.executeUpdate(
