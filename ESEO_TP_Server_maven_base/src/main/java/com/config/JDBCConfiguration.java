@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class JDBCConfiguration {
+	private static final String PASSWORD = ConfigRead.getString("PASSWORD");
 
 	@Bean
 	public static Connection getConnection() {
@@ -19,7 +20,7 @@ public class JDBCConfiguration {
 
 		String jdbcdriver = "com.mysql.cj.jdbc.Driver";
 		String user = "admin";
-		String password = "network";
+		String password = PASSWORD;
 		String addressServer = "localhost";
 		String sqlUrl = "jdbc:mysql://" + addressServer + "/ville_france?user=" + user + "&password=" + password;
 

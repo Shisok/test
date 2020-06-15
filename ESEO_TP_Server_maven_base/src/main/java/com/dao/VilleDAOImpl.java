@@ -86,4 +86,35 @@ public class VilleDAOImpl implements VilleDAO {
 		}
 
 	}
+
+	public void insertVillePut(Ville ville) {
+		String sql = "SELECT * FROM ville_france WHERE Code_commune_INSE=" + ville.getCodeCommune();
+		List<Ville> listeVille = requete(sql);
+		if (listeVille.isEmpty()) {
+			try (Connection connection = JDBCConfiguration.getConnection();
+					Statement stmt = connection.createStatement();) {
+				stmt.executeUpdate(
+						"Insert into ville_france(Code_commune_INSEE,Nom_commune,Libelle_acheminement,Ligne_5,Latitude,Code_postal,Longitude)"
+								+ " values(" + ville.getCodeCommune() + ",'" + ville.getNomCommune() + "','"
+								+ ville.getLibelleAcheminement() + "','" + ville.getLigne() + "'," + ville.getLatitude()
+								+ "," + ville.getCodePostal() + "," + ville.getLongitude() + ")");
+			} catch (SQLException e) {
+				logger.error(error, e);
+			}
+		}
+
+	}
+
+	public void deleteVille(Ville ville) {
+
+		try (Connection connection = JDBCConfiguration.getConnection();
+				Statement stmt = connection.createStatement();) {
+			stmt.executeUpdate(
+					"UPDATE ville_france SET Flag_Delete = 1 WHERE Code_commune_INSE" + ville.getCodeCommune());
+		} catch (SQLException e) {
+			logger.error(error, e);
+		}
+
+	}
+
 }

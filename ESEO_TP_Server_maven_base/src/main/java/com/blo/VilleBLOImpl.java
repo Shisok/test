@@ -33,4 +33,12 @@ public class VilleBLOImpl implements VilleBLO {
 		villeDAO.insertVille(ville);
 	}
 
+	public void insertVillePut(Ville ville) {
+		villeDAO.insertVillePut(ville);
+	}
+
+	public void deleteVille(Ville ville) {
+		villeDAO.deleteVille(ville);
+	}
+
 }

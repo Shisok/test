@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -52,6 +53,16 @@ class VilleController {
 	public List<Ville> appelPost(@RequestBody Ville ville) {
 		System.out.println("Appel POST");
 		villeService.insertVille(ville);
+		List<Ville> ville1 = new ArrayList<>();
+		ville1.add(ville);
+		return ville1;
+	}
+
+	@PutMapping(value = "/ville")
+	@ResponseBody
+	public List<Ville> appelPut(@RequestBody Ville ville) {
+		System.out.println("Appel POST");
+		villeService.insertVillePut(ville);
 		List<Ville> ville1 = new ArrayList<>();
 		ville1.add(ville);
 		return ville1;
