@@ -58,6 +58,7 @@ public class VilleDAOImpl implements VilleDAO {
 				latitude = rs.getFloat("Latitude");
 				codePostal = rs.getInt("Code_postal");
 				longitude = rs.getFloat("Longitude");
+
 				ville = new Ville(codeCommuneINSEE, nomcommune, codePostal, libelleAcheminement, ligne5, latitude,
 						longitude);
 				listeVille.add(ville);

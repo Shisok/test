@@ -71,11 +71,7 @@ public class ExecuterModificationVille extends HttpServlet {
 					+ codePostal + "', `Libelle_acheminement` = '" + libelleAcheminement + "', `Ligne_5` = '" + ligne5
 					+ "', `Latitude` = '" + latitude + "', `Longitude` = '" + longitude
 					+ "' WHERE `ville_france`.`Code_commune_INSEE` = '" + codeCommuneINSEE + "'");
-			System.out.println("UPDATE `ville_france` SET `Nom_commune` = '" + nomCommune + "', `Code_postal` = '"
-					+ codePostal + "', `Libelle_acheminement` = '" + libelleAcheminement + "', `Ligne_5` = '" + ligne5
-					+ "', `Latitude` = '" + latitude + "', `Longitude` = '" + longitude
-					+ "' WHERE `ville_france`.`Code_commune_INSEE` = '" + codeCommuneINSEE + "'");
-			System.out.println("reussi");
+
 		} catch (
 
 		SQLException e) {

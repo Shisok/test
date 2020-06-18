@@ -15,30 +15,32 @@
 
 <div class="container-central">
 		<form method="POST" action="ExecuterModificationVille">
-			<label for="codeCommuneINSEE"><b>code Commune INSEE :</b></label>
+			<label for="codeCommuneINSEE"><strong>code Commune INSEE :</strong></label>
 			<input class="form-control form-perso" name="codeCommuneINSEE"
 				id="codeCommuneINSEE" type="text" style="margin: auto;"
 				value="<%=session.getAttribute("codeCommuneINSEE")%>" required>
-			<br> <label for="nomCommune" ><b>nom Commune :
-				</b></label> <input class="form-control form-perso"
+			<br> <label for="nomCommune" ><strong>nom Commune :
+				</strong></label> <input class="form-control form-perso"
 				name="nomCommune" id="nomCommune" type="text"
 				style="margin: auto;"
 				value="<%=session.getAttribute("nomCommune")%>" required>
-			<br> <label for="codePostal" id="java"><b>code Postal :</b></label> <input
+			<br> <label for="codePostal" id="java"><strong>code Postal :</strong></label> <input
 				class="form-control form-perso" name="codePostal" id="codePostal"
 				style="margin: auto;" type="text"
 				value="<%=session.getAttribute("codePostal")%>" required>
-			<br>  <label for="libelleAcheminement"><b>Libelle Acheminement :</b></label> <input class="form-control form-perso"
+			<br>  <label for="libelleAcheminement"><strong>Libelle Acheminement :</strong></label> <input class="form-control form-perso"
 				name="libelleAcheminement" id="libelleAcheminement" style="margin: auto;"
 				type="text" value="<%=session.getAttribute("libelleAcheminement")%>"
-				required> <br> <br> <label for="ligne5"><b>ligne5  :</b></label> <input class="form-control form-perso" name="ligne5"
+				required> 
+			<br> <br> <label for="ligne5"><strong>ligne5  :</strong></label> <input class="form-control form-perso" name="ligne5"
 				id="ligne5" style="margin: auto;" type="text"
 				value="<%=session.getAttribute("ligne5")%>" required> <br>
 			<br> <br>
-			<label for="latitude"><b>Latitude:</b></label> <input class="form-control form-perso"
+			<label for="latitude"><strong>Latitude:</strong></label> <input class="form-control form-perso"
 				name="latitude" id="latitude" style="margin: auto;"
 				type="text" value="<%=session.getAttribute("latitude")%>"
-				required> <br> <br> <label for="longitude"><b>Longitude  :</b></label> <input class="form-control form-perso" name="ligne5"
+				required> 
+			<br> <br> <label for="longitude"><strong>Longitude  :</strong></label> <input class="form-control form-perso" name="longitude"
 				id="longitude" style="margin: auto;" type="text"
 				value="<%=session.getAttribute("longitude")%>" required> <br>
 			<br>

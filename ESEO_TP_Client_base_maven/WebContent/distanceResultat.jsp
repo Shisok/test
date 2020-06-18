@@ -13,7 +13,7 @@
 
 <h1> Distance entre :</h1>
 		<form action="CalculDistanceVille" method="POST">
-			<label for="ville1"><b>Ville 1 :</b></label> <select
+			<label for="ville1"><strong>Ville 1 :</strong></label> <select
 				 name="ville1" id="ville1" required>
 				<c:forEach items="${villes}" var="v">
 					<option id="outil,<c:out value="${v}"></c:out>"><c:out
@@ -23,7 +23,7 @@
 			</select>
 			<br>
 				<br>
-			<label for="ville2"><b>Ville 2 :</b></label> <select
+			<label for="ville2"><strong>Ville 2 :</strong></label> <select
 				 name="ville2" id="ville2" required>
 				<c:forEach items="${villes}" var="v">
 					<option id="ville2,<c:out value="${v}"></c:out>"><c:out
