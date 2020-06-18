@@ -25,7 +25,7 @@ import org.slf4j.LoggerFactory;
 public class CalculDistanceVille extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(new Throwable().getStackTrace()[0].getClassName());
-	private static final String USER_AGENT = "Mozilla/5.0";
+
 	private static String error = "Error";
 
 	/**
