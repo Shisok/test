@@ -47,7 +47,6 @@ public class DistanceVille extends HttpServlet {
 
 		String resultat = HttpURLConnectionExample.getVilles();
 
-		logger.info(resultat);
 		JSONObject jsonObj;
 		try {
 			jsonObj = new JSONObject(resultat);
