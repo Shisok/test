@@ -43,10 +43,9 @@ public class DistanceVille extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession();
 
 		String resultat = HttpURLConnectionExample.getVilles();
-
+		HttpSession session = request.getSession();
 		JSONObject jsonObj;
 		try {
 			jsonObj = new JSONObject(resultat);

@@ -50,13 +50,13 @@ public class AffichageVille extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		HttpSession session = request.getSession();
 		int numeroPage = 0;
 		int nombreTotalOutil = 0;
 		int nombreParPage = 50;
 		int indexDebut = 0;
 		int nombrePage = 0;
-
-		HttpSession session = request.getSession();
 
 		String resultat = HttpURLConnectionExample.getVilles();
 		logger.info(resultat);
