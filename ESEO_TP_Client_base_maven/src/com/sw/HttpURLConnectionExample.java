@@ -28,34 +28,7 @@ public class HttpURLConnectionExample {
 	// HTTP GET request
 	private void sendGet() throws IOException, JSONException {
 
-//		String url = "http://localhost:8181/ville";
-//
-//		URL obj = new URL(url);
-//		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-//
-//		// optional default is GET
-//		con.setRequestMethod("GET");
-//
-//		// add request header
-//		con.setRequestProperty("User-Agent", USER_AGENT);
-//
-//		int responseCode = con.getResponseCode();
-//		logger.info("\nSending 'GET' request to URL : {}", url);
-//
-//		logger.info("Response Code : {}", responseCode);
-//
-//		BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-//		String inputLine;
-//		StringBuilder response = new StringBuilder();
-//
-//		while ((inputLine = in.readLine()) != null) {
-//			response.append(inputLine);
-//		}
-//		in.close();
-//		String resultat = response.toString();
 		String resultat = getVilles();
-//		resultat = resultat.replace("[", "{\"tableau\":[");
-//		resultat = resultat.replace("]", "]}");
 
 		logger.info(resultat);
 		JSONObject jsonObj = new JSONObject(resultat);
