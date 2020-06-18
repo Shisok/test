@@ -22,7 +22,6 @@ public class VilleDAOImpl implements VilleDAO {
 
 	public List<Ville> getInfoVille() {
 
-		// System.out.println("Appel GET");
 		logger.info("Appel GET");
 		String sql = "SELECT * FROM ville_france ";
 		return requete(sql);
@@ -30,7 +29,6 @@ public class VilleDAOImpl implements VilleDAO {
 	}
 
 	public List<Ville> getInfoVilleParam(int code) {
-		// System.out.println("Appel GET");
 		logger.info("Appel GET");
 		String sql = "SELECT * FROM ville_france WHERE Code_postal=" + code;
 		return requete(sql);
