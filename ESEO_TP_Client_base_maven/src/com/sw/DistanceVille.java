@@ -51,11 +51,10 @@ public class DistanceVille extends HttpServlet {
 		try {
 			jsonObj = new JSONObject(resultat);
 			JSONArray array = jsonObj.getJSONArray("tableau");
-			String nomCommune;
 			List<String> listeNomCommune = new ArrayList<>();
 			for (int i = 0; i < array.length(); i++) {
-				nomCommune = array.getJSONObject(i).getString("nomCommune");
-				listeNomCommune.add(nomCommune);
+
+				listeNomCommune.add(array.getJSONObject(i).getString("nomCommune"));
 
 			}
 			session.setAttribute("villes", listeNomCommune);
