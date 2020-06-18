@@ -61,6 +61,8 @@ public class DistanceVille extends HttpServlet {
 
 			logger.error(error, e);
 		}
+
+		session.setAttribute("calcul", 0);
 		RequestDispatcher dispat = request.getRequestDispatcher("distance.jsp");
 		dispat.forward(request, response);
 		//

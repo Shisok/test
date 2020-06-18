@@ -52,6 +52,13 @@
 		</table>
 	 </div>
 	 
+	 <div>
+		<button type="submit" id="boutonmenuOutil" 
+				onclick="window.location.href = 'http://localhost:8080/ESEO_TP_Client_base_maven/';"
+				> Accueil
+			</button>
+		</div>
+	 
 	<% if (nombrePage>1){ %>
 	<div class="container-central">
 		<nav aria-label="Page navigation example">
@@ -64,6 +71,7 @@
 			</ul>
 		</nav>
 	</div>
+	
 	<%} %>
 </body>
 </html>

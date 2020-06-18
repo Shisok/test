@@ -37,6 +37,23 @@
 			name="Envoyer" 
 				>Calculer</button>
 		</form>
-
+		<br>
+		<%
+		if ((int) session.getAttribute("calcul") == 1) {
+		%><div>
+		La distance entre ${ville1} et ${ville2} est de ${distance} km.</div>
+		<%
+			} else {
+		%>
+		
+		<%
+			}
+		%>
+		<div>
+		<button type="submit" id="boutonmenuOutil" 
+				onclick="window.location.href = 'http://localhost:8080/ESEO_TP_Client_base_maven/';"
+				>Accueil
+			</button>
+		</div>
 </body>
 </html>

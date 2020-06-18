@@ -79,11 +79,12 @@ public class CalculDistanceVille extends HttpServlet {
 							* Math.cos(Math.toRadians(lat2)) * Math.cos(Math.toRadians(Math.abs(long2 - long1))));
 			session.setAttribute("villes", listeNomCommune);
 			session.setAttribute("distance", distance);
+			session.setAttribute("calcul", 1);
 		} catch (JSONException e) {
 
 			logger.error(error, e);
 		}
-		RequestDispatcher dispat = request.getRequestDispatcher("distanceResultat.jsp");
+		RequestDispatcher dispat = request.getRequestDispatcher("distance.jsp");
 		dispat.forward(request, response);
 
 		//
