@@ -26,7 +26,7 @@ public class TestVille {
 		// optional default is GET
 		con.setRequestMethod("GET");
 
-		// add request header
+		// add request headers
 		con.setRequestProperty("User-Agent", USER_AGENT);
 
 		int responseCode = con.getResponseCode();
