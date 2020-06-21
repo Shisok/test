@@ -34,7 +34,7 @@
 				required> 
 			<br> <br> <label for="ligne5"><strong>ligne5  :</strong></label> <input class="form-control form-perso" name="ligne5"
 				id="ligne5" style="margin: auto;" type="text"
-				value="<%=session.getAttribute("ligne5")%>" required> <br>
+				value="<%=session.getAttribute("ligne5")%>"> <br>
 			<br> <br>
 			<label for="latitude"><strong>Latitude:</strong></label> <input class="form-control form-perso"
 				name="latitude" id="latitude" style="margin: auto;"

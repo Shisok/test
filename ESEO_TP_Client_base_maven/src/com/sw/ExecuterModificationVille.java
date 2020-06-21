@@ -78,7 +78,7 @@ public class ExecuterModificationVille extends HttpServlet {
 			logger.error(error, e);
 		}
 
-		RequestDispatcher dispat = request.getRequestDispatcher("modificationReussie.jsp");
+		RequestDispatcher dispat = request.getRequestDispatcher("AffichageVille");
 		dispat.forward(request, response);
 
 	}
